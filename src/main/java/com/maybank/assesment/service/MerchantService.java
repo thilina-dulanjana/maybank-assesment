@@ -1,13 +1,12 @@
 package com.maybank.assesment.service;
 
-import java.util.List;
+import java.util.Optional;
 
 import com.maybank.assesment.entity.Merchant;
-import org.springframework.stereotype.Service;
 
 
 public interface MerchantService {
-    Merchant gMerchant(Integer id);
+    Optional<Merchant> getMerchant(Integer id);
 
-    List<Merchant> getAll();
+    Iterable<Merchant> listAllProducts();
 }
