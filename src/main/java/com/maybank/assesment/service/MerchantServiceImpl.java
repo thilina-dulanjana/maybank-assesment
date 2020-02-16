@@ -19,7 +19,7 @@ public class MerchantServiceImpl implements MerchantService {
     }
 
     @Override
-    public Iterable<Merchant> listAllProducts() {
+    public Iterable<Merchant> listAllMerchants() {
         return merchantRepository.findAll();
     }
 

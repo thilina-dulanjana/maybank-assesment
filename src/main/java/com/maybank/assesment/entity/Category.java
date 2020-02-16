@@ -18,7 +18,7 @@ public class Category implements Serializable{
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false, unique = true, length = 10)
-	private int categorId;
+	private int id;
 	
 	@Column(name = "category_name", length = 500)
 	private String categoryDesc;
@@ -26,14 +26,14 @@ public class Category implements Serializable{
 	@Column(name = "parent_id", length = 50, nullable = false)
 	private int parentId;
 
-	public int getCategorId() {
-		return categorId;
-	}
+    public int getId() {
+        return this.id;
+    }
 
-	public void setCategorId(int categorId) {
-		this.categorId = categorId;
-	}
-
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 	public String getCategoryDesc() {
 		return categoryDesc;
 	}

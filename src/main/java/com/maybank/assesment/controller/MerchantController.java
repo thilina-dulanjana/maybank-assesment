@@ -39,7 +39,7 @@ public class MerchantController {
     @ApiOperation(value = "List all merchants",response = Merchant.class)
     @RequestMapping(value = "/get", method= RequestMethod.GET, produces = "application/json")
     public Iterable<Merchant> list(Model model){
-        Iterable<Merchant> merchantList = merchantService.listAllProducts();
+        Iterable<Merchant> merchantList = merchantService.listAllMerchants();
         return merchantList;
     }
 }

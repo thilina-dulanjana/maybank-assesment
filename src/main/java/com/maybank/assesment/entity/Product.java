@@ -55,10 +55,10 @@ public class Product implements Serializable{
 	private Set<String> imageUrls;
 	
 	@ManyToOne(cascade = CascadeType.DETACH ,targetEntity = Category.class)
-	@JoinColumn(name = "categorId")
+	@JoinColumn(name = "id")
 	private Category category;
 	
-	@ManyToOne(cascade = CascadeType.DETACH, targetEntity = Merchant.class, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.DETACH, targetEntity = Merchant.class, fetch = FetchType.LAZY)
 	private Merchant merchant;
 	
 

@@ -8,5 +8,5 @@ import com.maybank.assesment.entity.Merchant;
 public interface MerchantService {
     Optional<Merchant> getMerchant(Integer id);
 
-    Iterable<Merchant> listAllProducts();
+    Iterable<Merchant> listAllMerchants();
 }
