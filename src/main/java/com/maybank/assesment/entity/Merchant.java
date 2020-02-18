@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "merchant", schema = "maybank")
@@ -24,9 +25,10 @@ public class Merchant implements Serializable {
     private int merchantId;
 
     @Column(name = "name", nullable = false, length = 200)
-    private String merchantName;
+    private String merchantName;    
 
-    @OneToMany( mappedBy = "merchant" , fetch = FetchType.LAZY, targetEntity = Product.class )
+    @OneToMany( fetch = FetchType.LAZY )
+    @JoinColumn(name="merchant_id")
     private Set<Product> products;
 
     public int getMerchantId() {

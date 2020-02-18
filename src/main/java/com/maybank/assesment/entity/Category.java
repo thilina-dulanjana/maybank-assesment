@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "category", schema = "maybank")
@@ -30,7 +31,8 @@ public class Category implements Serializable{
 	@Column(name = "parent_id", length = 50, nullable = false)
     private int parentId;
     
-    @OneToMany( mappedBy = "category" , fetch = FetchType.LAZY, targetEntity = Product.class )
+    @OneToMany( fetch = FetchType.LAZY )
+    @JoinColumn(name="catregory_id")
     private Set<Product> products;
 
 

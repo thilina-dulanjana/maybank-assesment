@@ -45,12 +45,10 @@ public class Product implements Serializable{
     @Column(name = "available", nullable = false)
     private boolean productAvailability;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "catregory_id", referencedColumnName = "id")
+    @ManyToOne
     private Category category;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "merchant_id", referencedColumnName = "id")
+    @ManyToOne
 	private Merchant merchant;
 	
 	// @OneToMany( mappedBy = "imageId" , cascade = CascadeType.DETACH, fetch = FetchType.LAZY, targetEntity = Image.class )
