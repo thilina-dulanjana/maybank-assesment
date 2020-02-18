@@ -40,7 +40,12 @@ public class ProductController {
     @ApiOperation(value = "List all products",response = Product.class)
     @RequestMapping(value = "/get", method= RequestMethod.GET, produces = "application/json")
     public Iterable<Product> list(Model model){
-        Iterable<Product> productList = productService.listAllProducts();
-        return productList;
+        try {
+            Iterable<Product> productList = productService.listAllProducts();
+            return productList;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

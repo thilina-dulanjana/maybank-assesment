@@ -1,11 +1,13 @@
 package com.maybank.assesment.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +22,9 @@ public class Image {
 	@Column(name = "image_url", nullable = false)
 	private String imageUrl;
 	
-	@Column(name = "product_id", nullable = false)
-	private int productId;
+    @ManyToOne(cascade = CascadeType.DETACH ,targetEntity = Product.class)
+	@JoinColumn(name = "product_id")
+    private Product product;
     
 
     public int getImageId() {
@@ -40,12 +43,4 @@ public class Image {
         this.imageUrl = imageUrl;
     }
 
-    public int getProductId() {
-        return this.productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-    
 }

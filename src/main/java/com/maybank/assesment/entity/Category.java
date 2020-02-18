@@ -1,15 +1,19 @@
 package com.maybank.assesment.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity(name = "category" )
+@Entity
 @Table(name = "category", schema = "maybank")
 public class Category implements Serializable{
     
@@ -18,21 +22,26 @@ public class Category implements Serializable{
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false, unique = true, length = 10)
-	private int id;
+	private int categoryId;
 	
 	@Column(name = "category_name", length = 500)
 	private String categoryDesc;
 	
 	@Column(name = "parent_id", length = 50, nullable = false)
-	private int parentId;
+    private int parentId;
+    
+    @OneToMany( mappedBy = "category" , fetch = FetchType.LAZY, targetEntity = Product.class )
+    private Set<Product> products;
 
-    public int getId() {
-        return this.id;
+
+    public int getCategoryId() {
+        return this.categoryId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
+    
     
 	public String getCategoryDesc() {
 		return categoryDesc;
@@ -49,5 +58,15 @@ public class Category implements Serializable{
     public void setParentId(int parentId) {
         this.parentId = parentId;
     }
+
+
+    public Set<Product> getProducts() {
+        return this.products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
+
 
 }

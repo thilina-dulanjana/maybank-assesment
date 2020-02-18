@@ -43,23 +43,18 @@ public class Product implements Serializable{
 	private int productMsrp;
     
     @Column(name = "available", nullable = false)
-	private boolean productAvailability;
+    private boolean productAvailability;
     
-    // @Column(name = "category_id")
-	// private String catregoryId;
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "catregory_id", referencedColumnName = "id")
+    private Category category;
     
-    // @Column(name = "merchant_id", nullable = false)
-    // private String merchantId;
-	
-	@OneToMany( mappedBy = "productId" , cascade = CascadeType.DETACH, fetch = FetchType.LAZY, targetEntity = Image.class )
-	private Set<String> imageUrls;
-	
-	@ManyToOne(cascade = CascadeType.DETACH ,targetEntity = Category.class)
-	@JoinColumn(name = "id")
-	private Category category;
-	
-    @ManyToOne(cascade = CascadeType.DETACH, targetEntity = Merchant.class, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "merchant_id", referencedColumnName = "id")
 	private Merchant merchant;
+	
+	// @OneToMany( mappedBy = "imageId" , cascade = CascadeType.DETACH, fetch = FetchType.LAZY, targetEntity = Image.class )
+	// private Set<String> imageUrls;
 	
 
     public int getProductId() {
@@ -122,14 +117,6 @@ public class Product implements Serializable{
         this.productAvailability = productAvailability;
     }
 
-    public Set<String> getImageUrls() {
-        return this.imageUrls;
-    }
-
-    public void setImageUrls(Set<String> imageUrls) {
-        this.imageUrls = imageUrls;
-    }
-
     public Category getCategory() {
         return this.category;
     }
@@ -138,8 +125,20 @@ public class Product implements Serializable{
         this.category = category;
     }
 
+
+    public Merchant getMerchant() {
+        return this.merchant;
+    }
+
     public void setMerchant(Merchant merchant) {
         this.merchant = merchant;
     }
-	
+
+	    // public Set<String> getImageUrls() {
+    //     return this.imageUrls;
+    // }
+
+    // public void setImageUrls(Set<String> imageUrls) {
+    //     this.imageUrls = imageUrls;
+    // }
 }

@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Iterable<Product> listAllProducts() {
+    public Iterable<Product> listAllProducts() throws Exception{
         return productRepository.findAll();
     }
 

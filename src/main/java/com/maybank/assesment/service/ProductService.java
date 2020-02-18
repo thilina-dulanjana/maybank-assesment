@@ -8,5 +8,5 @@ import com.maybank.assesment.entity.Product;
 public interface ProductService {
     Optional<Product> getProduct(Integer id);
 
-    Iterable<Product> listAllProducts();
+    Iterable<Product> listAllProducts() throws Exception;
 }
