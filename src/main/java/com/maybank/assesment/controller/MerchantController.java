@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-// import io.swagger.annotations.Api;
-// import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/merchant")
-// @Api(value="onlinemerchants", description="Operations pertaining to merchants in Online Store")
+@Api(value="onlinemerchants", description="Operations pertaining to merchants in Online Store")
 public class MerchantController {
 
     private MerchantService merchantService;
@@ -30,7 +30,7 @@ public class MerchantController {
         this.merchantService = merchantService;
     }
 
-    // @ApiOperation(value = "Search a merchant with an ID",response = Merchant.class)
+    @ApiOperation(value = "Search a merchant with an ID",response = Merchant.class)
     @RequestMapping(value = "/get/{id}", method= RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Merchant> getMerchantById(@PathVariable Integer id, Model model){
         Optional<Merchant> op =  merchantService.getMerchant(id);
@@ -39,7 +39,7 @@ public class MerchantController {
 
     }
 
-    // @ApiOperation(value = "List all merchants",response = Merchant.class)
+    @ApiOperation(value = "List all merchants",response = Merchant.class)
     @RequestMapping(value = "/get", method= RequestMethod.GET, produces = "application/json")
     public List<Merchant> list(Model model){
         
