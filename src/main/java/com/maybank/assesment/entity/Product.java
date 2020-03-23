@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 @Table(name = "product", schema = "maybank")
@@ -47,10 +49,12 @@ public class Product implements Serializable{
     
     @ManyToOne( fetch = FetchType.LAZY )    
     @JoinColumn(name="catregory_id")
+    @JsonBackReference
     private Category category;
     
     @ManyToOne( fetch = FetchType.LAZY )
     @JoinColumn(name="merchant_id")
+    @JsonBackReference
 	private Merchant merchant;
 	
 	// @OneToMany( mappedBy = "imageId" , cascade = CascadeType.DETACH, fetch = FetchType.LAZY, targetEntity = Image.class )

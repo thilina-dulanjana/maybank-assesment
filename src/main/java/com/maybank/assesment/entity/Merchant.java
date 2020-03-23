@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -28,6 +31,7 @@ public class Merchant implements Serializable {
     private String merchantName;    
 
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "merchant")
+    @JsonManagedReference
     private List<Product> products;
 
     public int getMerchantId() {
