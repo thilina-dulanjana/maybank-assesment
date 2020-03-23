@@ -1,7 +1,7 @@
 package com.maybank.assesment.entity;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -45,14 +45,16 @@ public class Product implements Serializable{
     @Column(name = "available", nullable = false)
     private boolean productAvailability;
     
-    @ManyToOne
+    @ManyToOne( fetch = FetchType.LAZY )    
+    @JoinColumn(name="catregory_id")
     private Category category;
     
-    @ManyToOne
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn(name="merchant_id")
 	private Merchant merchant;
 	
 	// @OneToMany( mappedBy = "imageId" , cascade = CascadeType.DETACH, fetch = FetchType.LAZY, targetEntity = Image.class )
-	// private Set<String> imageUrls;
+	// private List<String> imageUrls;
 	
 
     public int getProductId() {
@@ -132,11 +134,11 @@ public class Product implements Serializable{
         this.merchant = merchant;
     }
 
-	    // public Set<String> getImageUrls() {
+	    // public List<String> getImageUrls() {
     //     return this.imageUrls;
     // }
 
-    // public void setImageUrls(Set<String> imageUrls) {
+    // public void setImageUrls(List<String> imageUrls) {
     //     this.imageUrls = imageUrls;
     // }
 }

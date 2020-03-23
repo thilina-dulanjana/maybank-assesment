@@ -1,7 +1,7 @@
 package com.maybank.assesment.entity;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,9 +27,8 @@ public class Merchant implements Serializable {
     @Column(name = "name", nullable = false, length = 200)
     private String merchantName;    
 
-    @OneToMany( fetch = FetchType.LAZY )
-    @JoinColumn(name="merchant_id")
-    private Set<Product> products;
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "merchant")
+    private List<Product> products;
 
     public int getMerchantId() {
         return merchantId;
@@ -48,11 +47,11 @@ public class Merchant implements Serializable {
     }
 
 
-    public Set<Product> getProducts() {
+    public List<Product> getProducts() {
         return this.products;
     }
 
-    public void setProducts(Set<Product> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 

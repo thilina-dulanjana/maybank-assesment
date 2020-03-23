@@ -1,7 +1,7 @@
 package com.maybank.assesment.entity;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -31,9 +31,8 @@ public class Category implements Serializable{
 	@Column(name = "parent_id", length = 50, nullable = false)
     private int parentId;
     
-    @OneToMany( fetch = FetchType.LAZY )
-    @JoinColumn(name="catregory_id")
-    private Set<Product> products;
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "category" )
+    private List<Product> products;
 
 
     public int getCategoryId() {
@@ -62,11 +61,11 @@ public class Category implements Serializable{
     }
 
 
-    public Set<Product> getProducts() {
+    public List<Product> getProducts() {
         return this.products;
     }
 
-    public void setProducts(Set<Product> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 

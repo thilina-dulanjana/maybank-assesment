@@ -1,5 +1,7 @@
 package com.maybank.assesment.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "image" ,schema = "maybank" )
-public class Image {
+public class Image implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy =  GenerationType.AUTO)

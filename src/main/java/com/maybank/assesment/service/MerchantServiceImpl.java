@@ -1,5 +1,6 @@
 package com.maybank.assesment.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.maybank.assesment.entity.Merchant;
@@ -19,7 +20,7 @@ public class MerchantServiceImpl implements MerchantService {
     }
 
     @Override
-    public Iterable<Merchant> listAllMerchants() {
+    public List<Merchant> listAllMerchants() {
         return merchantRepository.findAll();
     }
 
